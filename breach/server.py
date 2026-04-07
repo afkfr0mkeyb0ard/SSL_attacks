@@ -4,14 +4,14 @@ import io
 
 app = Flask(__name__)
 
-SECRET = "SECRET_TOKEN_TRYFINDME"
+SECRET = "SECRET_TOKEN_TRYFINDMEYAY"
 
 @app.route("/")
 def index():
     q = request.args.get("q", "")
 
     # vulnerable code here
-    body = f"token={SECRET}&token={q}"
+    body = f"token={SECRET}&q={q}"
 
     buf = io.BytesIO()
     with gzip.GzipFile(fileobj=buf, mode="wb") as f:
